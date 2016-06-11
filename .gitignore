@@ -1,4 +1,4 @@
-data/
+raw/
 bimbo/
 *.ipynb_checkpoints
 .DS_Store
