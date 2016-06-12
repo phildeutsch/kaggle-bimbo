@@ -1,6 +1,7 @@
 raw/
 bimbo/
-*.ipynb_checkpoints
+.ipynb_checkpoints/
+submissions/
+
 .DS_Store
 __pycache__
-submissions/
