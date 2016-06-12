@@ -8,8 +8,8 @@ import data
 common_names = list(set(data.train.columns.values) & set(data.test.columns.values))
 common_names.remove('Semana')
 
-X_train = data.train[common_names]
-y_train = data.train['Demanda_uni_equil']
+X_train = data.train.loc[data.train['Semana']==3][common_names]
+y_train = data.train.loc[data.train['Semana']==3]['Demanda_uni_equil']
 X_test = data.test[common_names]
 
 # Fit SGD classifier
