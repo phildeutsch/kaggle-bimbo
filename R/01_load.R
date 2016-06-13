@@ -38,12 +38,13 @@ if (LOAD_FROM_IMAGE) {
   saveRDS(train, str_c(SAVE_PATH, "train.rds"), compress=FALSE)
 }
 
+time_end = Sys.time()
+cat(str_c("Total time: ", round(difftime(time_end, time_start, units = "mins"),1), " mins.\n"))
+
 # Clean up
 cat(str_c(Sys.time(), " Clean up..."))
-rm(list=intersect(ls(), c("clients", "products", "town_state", "test", "train")))
+rm(list=setdiff(ls(), c("clients", "products", "town_state", "test", "train")))
 gc()
 cat("done.\n")
 
-time_end = Sys.time()
-cat(str_c("Total time: ", round(difftime(time_end, time_start, units = "mins"),1), " mins.\n"))
     
