@@ -1,5 +1,5 @@
 import pandas as pd
-from models import most_common
+from models import most_common, average_demand_by_product
 
 NROWS = 1000
 print("Loading data")
