@@ -1,5 +1,6 @@
 from collections import Counter
 import numpy as np
+import pandas as pd
 
 def predict(df_train, df_test):
     # Get the most common occurence of Demanda_uni_equil
