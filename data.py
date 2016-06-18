@@ -1,10 +1,8 @@
 import pandas as pd
 import os
 
-try:
-    NROWS
-except NameError:
-    NROWS = None
+NROWS = 1000
+# NROWS = None
 
 town_state = pd.read_csv('raw/town_state.csv')
 products = pd.read_csv('raw/producto_tabla.csv')
