@@ -8,3 +8,4 @@ __pycache__
 .Rproj.user
 *.Rproj
 R/data/
+.Rhistory
