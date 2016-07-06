@@ -25,6 +25,18 @@ create table products (
   product_name text);
 \copy products from 'raw/producto_tabla.csv' with (format csv, delimiter ',', header TRUE)
 
+drop table if exists test;
+create table test (
+  id int,
+  week int,
+  store_id text,
+  channel_id text,
+  route_id text,
+  client_id text,
+  product_id text
+  );
+\copy test from 'raw/test.csv' with (format csv, delimiter ',', header TRUE)
+
 drop table if exists train;
 create table train (
   week int,
@@ -41,14 +53,9 @@ create table train (
   );
 \copy train from 'raw/train.csv' with (format csv, delimiter ',', header TRUE)
 
-drop table if exists test;
-create table test (
-  id int,
-  week int,
-  store_id text,
-  channel_id text,
-  route_id text,
-  client_id text,
-  product_id text
-  );
-\copy test from 'raw/test.csv' with (format csv, delimiter ',', header TRUE)
+create index on train(week);
+create index on train(store_id);
+create index on train(channel_id);
+create index on train(route_id);
+create index on train(client_id);
+create index on train(product_id);
