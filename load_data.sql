@@ -1,3 +1,5 @@
+SET client_encoding = 'UTF8';
+
 drop table if exists town_state;
 
 create table town_state (
