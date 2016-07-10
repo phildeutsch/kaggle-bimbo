@@ -2,7 +2,7 @@ SET client_encoding = 'UTF8';
 
 DROP TABLE IF EXISTS town_state;
 CREATE TABLE town_state (
-  store_id TEXT,
+  store_id TEXT PRIMARY KEY,
   town TEXT,
   state TEXT);
 \COPY town_state FROM 'raw/town_state.csv' WITH (FORMAT CSV, DELIMITER ',', HEADER TRUE)
@@ -13,21 +13,17 @@ CREATE TABLE clients (
   client_name TEXT);
 \COPY clients FROM 'raw/cliente_tabla.csv' WITH (FORMAT CSV, DELIMITER ',', HEADER TRUE)
 
+-- TODO: Remove duplicate client ids
+
 DROP TABLE IF EXISTS products;
 CREATE TABLE products (
   product_id TEXT PRIMARY KEY,
   product_name TEXT);
 \COPY products FROM 'raw/producto_tabla.csv' WITH (FORMAT CSV, DELIMITER ',', HEADER TRUE)
 
-DROP TABLE IF EXISTS products;
-CREATE TABLE products (
-  product_id TEXT,
-  product_name TEXT);
-\COPY products FROM 'raw/producto_tabla.csv' WITH (FORMAT CSV, DELIMITER ',', HEADER TRUE)
-
 DROP TABLE IF EXISTS test;
 CREATE TABLE test (
-  id INT,
+  id INT PRIMARY KEY,
   week INT,
   store_id TEXT,
   channel_id TEXT,
@@ -52,6 +48,7 @@ CREATE TABLE train (
   demand INT
   );
 \COPY train FROM 'raw/train.csv' WITH (FORMAT CSV, DELIMITER ',', HEADER TRUE)
+ALTER TABLE train ADD COLUMN id SERIAL PRIMARY KEY;
 
 CREATE INDEX ON train(week);
 CREATE INDEX ON train(store_id);
