@@ -1,5 +1,6 @@
-# exec(open("test_orm.py").read(), globals())
+# exec(open("connect_db.py").read(), globals())
 
+import pandas as pd
 import sqlalchemy as sql
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -39,9 +40,35 @@ class Product(Base):
         return "<Product(id='%s', name='%s')>" % (
             self.product_id, self.product_name)
 
+class Train(Base):
+    __tablename__ = 'train'
+
+    week = sql.Column(sql.Integer)
+    store_id = sql.Column(sql.String)
+    channel_id = sql.Column(sql.String)
+    route_id = sql.Column(sql.String)
+    client_id = sql.Column(sql.Integer)
+    product_id = sql.Column(sql.String)
+    sales_vol = sql.Column(sql.Integer)
+    sales_val = sql.Column(sql.Numeric)
+    returns_vol = sql.Column(sql.Integer)
+    returns_val = sql.Column(sql.Numeric)
+    demand = sql.Column(sql.Integer)
+    id = sql.Column(sql.Integer, primary_key=True)
+
+class Test(Base):
+    __tablename__ = 'test'
+
+    id = sql.Column(sql.Integer, primary_key=True)
+    week = sql.Column(sql.Integer)
+    store_id = sql.Column(sql.String)
+    channel_id = sql.Column(sql.String)
+    route_id = sql.Column(sql.String)
+    client_id = sql.Column(sql.Integer)
+    product_id = sql.Column(sql.String)
+
 Session = sql.orm.sessionmaker(bind=db)
 session = Session()
 
-products = session.query(Product).limit(10).all()
-for p in products:
-    print(p)
+stores = session.query(Store).limit(10)
+df = pd.read_sql(stores.statement, stores.session.bind)
