@@ -3,6 +3,7 @@
 import pandas as pd
 import sqlalchemy as sql
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import func
 
 db = sql.create_engine('postgresql+pg8000://Philipp.Deutsch:postgres@localhost/bimbo')
 db.echo = False
@@ -70,5 +71,5 @@ class Test(Base):
 Session = sql.orm.sessionmaker(bind=db)
 session = Session()
 
-stores = session.query(Store).limit(10)
-df = pd.read_sql(stores.statement, stores.session.bind)
+#stores = session.query(Store).limit(10)
+#df = pd.read_sql(stores.statement, stores.session.bind)
