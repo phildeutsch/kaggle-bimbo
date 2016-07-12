@@ -11,3 +11,6 @@ from models import *
 
 # Average demand by product, but using SQLAlchemy
 average_demand_by_product_2()
+
+# Use the average by product and store if available
+average_demand_by_product_store()

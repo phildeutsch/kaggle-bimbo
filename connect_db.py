@@ -5,6 +5,10 @@ import sqlalchemy as sql
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import func
 
+def sql_to_df(query):
+    df = pd.read_sql(query.statement, query.session.bind)
+    return df
+
 db = sql.create_engine('postgresql+pg8000://Philipp.Deutsch:postgres@localhost/bimbo')
 db.echo = False
 
