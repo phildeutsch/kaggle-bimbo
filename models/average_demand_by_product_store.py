@@ -42,9 +42,10 @@ def predict():
     submission['demand'][-np.isnan(submission.demand_product_store)] = \
         submission['demand_product_store'][-np.isnan(submission.demand_product_store)]
 
-    # Delete columns we don't need and reorder
+    # Delete columns we don't need, reorder and rename
     submission.drop(['product_id', 'store_id', 'demand_product', 'demand_product_store'], axis=1, inplace=True)
     submission.sort_values(by='id', inplace=True)
+    submission.columns = ['id', 'Demanda_uni_equil']
 
     # write file
     submission.to_csv('submissions/avg_demand_by_product_store.csv', index=False)

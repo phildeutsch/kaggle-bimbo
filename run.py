@@ -1,4 +1,4 @@
-from models import *
+from models import average_demand_by_product_store
 
 # print("Loading data")
 # import data
@@ -10,7 +10,7 @@ from models import *
 # average_demand_by_product.predict(data.train, data.test)
 
 # Average demand by product, but using SQLAlchemy
-average_demand_by_product_2()
+#average_demand_by_product_2.predict()
 
 # Use the average by product and store if available
-average_demand_by_product_store()
+average_demand_by_product_store.predict()
